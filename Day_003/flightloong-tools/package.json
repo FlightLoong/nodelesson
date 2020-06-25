@@ -1,0 +1,13 @@
+{
+  "name": "flightloong-tools",
+  "version": "1.0.0",
+  "description": "提供格式化时间、HTMLEscape相关功能",
+  "main": "index.js",
+  "keywords": [
+    "itcast",
+    "itheima",
+    "dateFormat",
+    "escape"
+  ],
+  "license": "ISC"
+}
