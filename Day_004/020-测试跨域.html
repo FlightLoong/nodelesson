@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+</head>
+
+<body>
+  <button class="btn1">get</button>
+  <button class="btn2">post</button>
+
+  <script>
+    $(function () {
+      $('.btn1').click(function () {
+        $.ajax({
+          url: 'http://127.0.0.1:3000/api/book?name=tom&age=10',
+          success: function (data) {
+            console.log(data)
+          }
+        })
+      })
+
+      $('.btn2').click(function () {
+        $.ajax({
+          url: 'http://127.0.0.1:3000/api/book',
+          method: 'post',
+          data: {
+            name: '雪中悍刀行',
+            author: '烽火戏诸侯'
+          },
+          success: function (data) {
+            console.log(data)
+          }
+        })
+      })
+    })
+  </script>
+</body>
+
+</html>
