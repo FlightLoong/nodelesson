@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录页面</title>
+  <script src="./jquery.js"></script>
+</head>
+
+<body>
+  <!-- 登录表单 -->
+  <form id="form1">
+    <div>账号：<input type="text" name="username" autocomplete="off"> </div>
+    <div>密码：<input type="password" name="password" autocomplete="off"></div>
+    <button>登录</button>
+  </form>
+
+  <script>
+    $(function () {
+      $('button').click((e) => {
+        // 阻止默认行为
+        e.preventDefault()
+        // 获取需要传递的参数
+        const params = $('#form1').serialize()
+        // 发送 ajax 
+        $.ajax({
+          url: '/api/login',
+          type: 'post',
+          data: params,
+          success: (data) => {
+            window.location.href = '/index.html'
+          }
+        })
+      })
+    })
+  </script>
+</body>
+
+</html>

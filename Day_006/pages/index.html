@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>后台主页</title>
+  <script src="./jquery.js"></script>
+</head>
+
+<body>
+  <h1>首页</h1>
+
+  <button id="btnLogin">退出登录</button>
+
+  <script>
+    $(function () {
+      // 初始化方法
+      function init() {
+        $.ajax({
+          url: '/api/username',
+          type: 'get',
+          success: (data) => {
+            // console.log(data)
+            if (!data.status) {
+              alert('欢迎登录：' + data.username)
+            } else {
+              alert('您尚未登录，请登录后在执行此操作！')
+              window.location.href = '/login.html'
+            }
+          }
+        })
+      }
+      init()
+
+      // 退出登录
+      $('#btnLogin').click(() => {
+        $.ajax({
+          url: '/api/logout',
+          type: 'post',
+          success: (data) => {
+            if (!data.status) {
+              alert(data.msg)
+              window.location.href = '/login.html'
+            }
+          }
+        })
+      })
+
+    })
+  </script>
+</body>
+
+</html>
